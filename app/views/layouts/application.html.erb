@@ -1,4 +1,4 @@
- <!DOCTYPE html>
+  <!DOCTYPE html>
 <html>
 	<head>
 	  <title>One Month Rails</title>
@@ -8,9 +8,14 @@
 	</head>
 	<body>
 		<%= render 'layouts/header' %>
-		<div class="container">
-		<%= yield %>
-		<%= render 'layouts/footer' %>
 
+		<div class="container">
+			<% flash.each do |name, msg| %>
+					<%= content_tag(:div, msg, class: "alert alert-#{name}") %>
+					<% end %>
+			<%= yield %>
+			<%= render 'layouts/footer' %>
+		</div>
+		
 	</body>
 </html>
